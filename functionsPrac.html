@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>functions</title>
+    <style></style>
+  </head>
+  <body>
+    Hello
+    <script>
+        function greet(name){
+            if(!name){
+                console.log("Hi there!");
+            }
+            else
+            console.log(`Hello ${name}`);
+        }
+
+        function convertToFahrenheit(celcius){
+            return Math.round((celcius * 9/5) + 32);
+        }
+
+        greet();
+        greet("Alice");
+        console.log(`0 Celcius in Fahrenheit: ${convertToFahrenheit(0)}`); // 32
+        console.log(`23 Celcius in Fahrenheit: ${convertToFahrenheit(23)}`); // 73
+    </script>
+  </body>
+</html>

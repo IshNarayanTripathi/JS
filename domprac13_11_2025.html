@@ -1,0 +1,37 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Objects</title>
+  </head>
+  <body>
+    <input type="text" class="js-input" placeholder="Enter your name" onkeyup="handlekeyPress(event);" />
+    <!-- <button onclick="updateName(document.querySelector('.js-input').value);">
+      Submit
+    </button> -->
+    <p class="js-p"></p>
+    <script>
+			function handlekeyPress(event){
+				let curr = document.querySelector('.js-p').innerHTML;
+				document.querySelector('.js-p').innerHTML = curr + event.key;
+			}
+      function updateName(name) {
+        document.querySelector('.js-p').innerHTML = `My name is ${name}!`;
+      }
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <input placeholder="Type something" class="js-input"
+      onkeyup="
+        const inputElement = document.querySelector('.js-input');
+        document.querySelector('.js-message')
+          .innerHTML = inputElement.value;
+      ">
+
+    <p class="js-message"></p>
+  </body>
+</html>

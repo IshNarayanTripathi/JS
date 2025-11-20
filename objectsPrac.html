@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Objects</title>
+  </head>
+  <body>
+    <script>
+      const obj1 = { name: "basketball", price: 2095 };
+      obj1.price += 500;
+      obj1["delivery-time"] = "3 days";
+      console.log(obj1);
+
+      function comparePrice(prod1, prod2) {
+        if (prod1.price > prod2.price) return prod2;
+        return prod1;
+      }
+      const prod1 = { name: "Laptop", price: 30000 };
+      const prod2 = { name: "Phone", price: 25000 };
+      console.log(comparePrice(prod1, prod2));
+      console.log("Good morning".toLowerCase());
+      console.log("test".repeat(3));
+    </script>
+  </body>
+</html>

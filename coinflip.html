@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <button onclick="console.log('heads chosen');flipCoin('heads')">Heads</button>
+    <button onclick="console.log('tails chosen');flipCoin('tails')">Tails</button>
+		<button onclick="score.wins = 0; score.losses = 0; localStorage.removeItem('Score'); alert('Score was Reset');">Reset</button>
+    <script>
+      const score = JSON.parse(localStorage.getItem("Score")) ||{
+        wins: 0,
+        losses: 0,
+      };
+      function flipCoin(choice) {
+        const randomNumber = Math.random();
+        const result = randomNumber < 0.5 ? "heads" : "tails";
+        if (choice === result) {
+					score.wins++;
+					console.log(`You win! It was ${result}.`);
+        } else {
+					score.losses++;
+					console.log(`You lose! It was ${result}.`);
+				}
+				localStorage.setItem("Score", JSON.stringify(score));
+				alert(`Wins: ${score.wins}, Losses: ${score.losses}`);
+      }
+    </script>
+  </body>
+</html>
