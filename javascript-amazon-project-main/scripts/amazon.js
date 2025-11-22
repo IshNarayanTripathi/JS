@@ -13,9 +13,9 @@ products.forEach((product) => {
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="images/ratings/rating-${product.ratings.stars * 10}.png">
+              src="images/ratings/rating-${product.rating.stars * 10}.png">
             <div class="product-rating-count link-primary">
-              ${product.ratings.count}
+              ${product.rating.count}
             </div>
           </div>
 
@@ -50,7 +50,5 @@ products.forEach((product) => {
           </button>
         </div>`;
 });
-
-console.log(productsHTML);
 
 document.querySelector(".js-product-grid").innerHTML = productsHTML;
