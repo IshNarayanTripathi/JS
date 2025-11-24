@@ -1,6 +1,12 @@
-export const cart = [];
+export const cart = [{
+  id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+  quantity: 2,
+}, {
+  id: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
+  quantity: 1,
+}];
 
-export function addToCart(id, name) {
+export function addToCart(id) {
   const quantity = document.querySelector(
     `.js-cart-quantity-${id} select`
   ).value;
@@ -15,6 +21,6 @@ export function addToCart(id, name) {
   if (product) {
     product.quantity += Number(quantity);
   } else {
-    cart.push({ name, quantity: Number(quantity), id });
+    cart.push({ id, quantity: Number(quantity)  });
   }
 }
