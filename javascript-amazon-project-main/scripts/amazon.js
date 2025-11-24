@@ -1,6 +1,5 @@
-import {cart} from '../data/cart.js';
-import { products } from '../data/products.js';
-
+import { cart, addToCart } from "../data/cart.js";
+import { products } from "../data/products.js";
 
 let productsHTML = "";
 
@@ -27,7 +26,9 @@ products.forEach((product) => {
             $${(product.priceCents / 100).toFixed(2)}
           </div>
 
-          <div class="product-quantity-container js-cart-quantity-${product.id}">
+          <div class="product-quantity-container js-cart-quantity-${
+            product.id
+          }">
             <select>
               <option selected value="1">1</option>
               <option value="2">2</option>
@@ -58,31 +59,21 @@ products.forEach((product) => {
 
 document.querySelector(".js-product-grid").innerHTML = productsHTML;
 
-document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
-  button.addEventListener('click', () => {
-    
+
+
+function updateCartQuantity() {
+  let totalItems = 0;
+  cart.forEach((cartItem) => (totalItems += cartItem.quantity));
+  console.log(`You have ${totalItems} items in your cart.`);
+  document.querySelector(".js-cart-quantity").innerHTML = totalItems;
+  console.log(cart);
+}
+
+document.querySelectorAll(".js-add-to-cart-button").forEach((button) => {
+  button.addEventListener("click", () => {
     const name = button.dataset.productName;
     const { productId: id } = button.dataset;
-    const quantity = document.querySelector(`.js-cart-quantity-${id} select`).value;
-    const product = cart.find(product => product.id === id) ?? null;
-    const buttonElement = document.querySelector(`.js-added-to-cart-${id}`);
-
-    buttonElement.classList.add('added-to-cart-visible');
-    clearTimeout(buttonElement.timeout);
-    buttonElement.timeout = setTimeout(() => {
-      buttonElement.classList.remove('added-to-cart-visible');
-    }, 2000);
-    if (product){
-      product.quantity += Number(quantity);
-    }
-    else{
-      cart.push({name, quantity: Number(quantity), id});
-    }
-    let totalItems = 0;
-    cart.forEach(items => totalItems += items.quantity);
-    console.log(`You have ${totalItems} items in your cart.`);
-    document.querySelector('.js-cart-quantity').innerHTML = totalItems;
-    console.log(cart);
+    addToCart(id, name);
+    updateCartQuantity();
   });
 });
-
